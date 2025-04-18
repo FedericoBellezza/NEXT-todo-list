@@ -22,7 +22,28 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="bg-red-500 p-5 flex justify-between">
+          <h2>Navbar</h2>
+          <ul className="flex gap-4">
+            <li>Home</li>
+            <li>Home</li>
+            <li>Home</li>
+          </ul>
+        </div>
         {children}
+        <div className="bg-red-500 p-5 flex justify-between">
+          <ul className="flex gap-4">
+            <li>Home</li>
+            <li>Home</li>
+            <li>Home</li>
+          </ul>
+          Footer
+          <ul className="flex gap-4">
+            <li>Home</li>
+            <li>Home</li>
+            <li>Home</li>
+          </ul>
+        </div>
       </body>
     </html>
   );
