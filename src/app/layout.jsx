@@ -1,5 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { AppProvider } from "./AppContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,28 +25,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="bg-red-500 p-5 flex justify-between">
-          <h2>Navbar</h2>
-          <ul className="flex gap-4">
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-          </ul>
-        </div>
-        {children}
-        <div className="bg-red-500 p-5 flex justify-between">
-          <ul className="flex gap-4">
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-          </ul>
-          Footer
-          <ul className="flex gap-4">
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-          </ul>
-        </div>
+        <AppProvider>
+          <Navbar />
+          <div className="container mx-auto min-h-screen py-10">{children}</div>
+          <Footer />
+        </AppProvider>
       </body>
     </html>
   );
