@@ -21,7 +21,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="bg-blue-800 p-5 flex justify-between items-center">
+    <div className="bg-linear-to-tr from-purple-700 to-blue-900 p-5 flex justify-between items-center text-white">
       <Link href={"/"} className="text-3xl italic font-black">
         TaskManager
       </Link>

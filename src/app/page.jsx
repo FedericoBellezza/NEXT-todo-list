@@ -13,19 +13,19 @@ export default function Home() {
   const [editingTodo, setEditingTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [editing, setEditing] = useState(null);
+  const [error, setError] = useState(null);
 
   // functions
   const getData = async () => {
-    const { data } = await supabase
-      .from("todo_list")
-      .select("*")
-      .order("id", { ascending: false });
+    const { data } = await supabase.from("todo_list").select("*").order("id");
     setTodoList(data);
     console.log(data);
   };
   const addTodo = async () => {
-    todo.trim() === "" && alert("Inserisci un todo");
     try {
+      if (todo.trim() === "") {
+        throw new Error("La todo non può essere vuota");
+      }
       const { data, error } = await supabase
         .from("todo_list")
         .upsert({
@@ -40,11 +40,13 @@ export default function Home() {
       console.log("Todo aggiunto/aggiornato:", data);
       getData();
       setTodo("");
+      setError(null);
 
       return data;
     } catch (err) {
       console.error("Errore completo:", err);
-      return null;
+      setError(err.message);
+      return;
     }
   };
   const deleteTodo = async (id) => {
@@ -97,6 +99,7 @@ export default function Home() {
       <h1 className="lg:text-4xl text-2xl font-bold text-center py-10  ">
         Lista delle cose da fare:
       </h1>
+      {error && <p className="text-red-500 text-center">Errore: {error}</p>}
       <div className="flex gap-5 justify-center py-5 ">
         <input
           className="border lg:w-1/3 px-3 py-1 rounded-xl"
