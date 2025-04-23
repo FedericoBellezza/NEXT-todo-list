@@ -56,7 +56,7 @@ export default function AuthForm() {
           Errore: {error}
         </p>
       )}
-      <div className="flex flex-col lg:flex-row  gap-4">
+      <div className="flex flex-col lg:flex-row items-center justify-center  gap-4">
         <input
           className="bg-slate-700 px-3 py-1 rounded-2xl "
           type="email"
