@@ -14,10 +14,6 @@ export default function AuthForm() {
   const pathname = usePathname();
 
   const handleLogin = async (type) => {
-    if (!email || !password) {
-      alert("Inserisci email e password");
-      return;
-    }
     if (type === "/login") {
       try {
         const { data, error } = await supabase.auth.signInWithPassword({
@@ -26,17 +22,14 @@ export default function AuthForm() {
         });
 
         if (error) {
-          setError(error);
-          alert(`Errore: ${error.message}`);
-          return;
+          throw error;
         }
         console.log("Login effettuato con successo!", data.user);
         login(data.user);
-        alert(`Benvenuto ${data.user.email}!`);
         router.push("/");
       } catch (err) {
         console.error("Errore imprevisto:", err);
-        alert("Si è verificato un errore durante il login");
+        setError(err.message);
       }
     } else if (type === "/register") {
       try {
@@ -57,15 +50,15 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="p-10">
+    <div className="py-10  w-7/10">
       {error && (
-        <p className=" my-5 py-5 text-center bg-red-900 border border-red-500 rounded-xl">
+        <p className=" mb-5 py-5 text-center bg-red-900 border border-red-500 rounded-xl">
           Errore: {error}
         </p>
       )}
-      <div className="flex gap-4">
+      <div className="flex flex-col lg:flex-row  gap-4">
         <input
-          className="bg-slate-700 px-3 py-1 rounded-2xl"
+          className="bg-slate-700 px-3 py-1 rounded-2xl "
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

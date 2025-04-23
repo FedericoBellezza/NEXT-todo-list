@@ -31,7 +31,7 @@ export default function Navbar() {
           <Link href={"/login"}>Login</Link>
         ) : (
           <div className="flex items-center gap-3">
-            <span className="font-bold italic text-xs underline ml-5">
+            <span className="font-bold italic text-xs underline ml-5 hidden lg:block">
               {user !== null && user.email}
             </span>
             <img
@@ -39,7 +39,7 @@ export default function Navbar() {
               className="w-10 h-10 rounded-full cursor-pointer"
               src={
                 user !== null &&
-                "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s"
               }
               alt={user !== null && user.email}
             />
@@ -52,12 +52,6 @@ export default function Navbar() {
                       className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     >
                       Logout
-                    </Link>
-                    <Link
-                      href={"/settings"}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                      Impostazioni
                     </Link>
                   </div>
                 </div>

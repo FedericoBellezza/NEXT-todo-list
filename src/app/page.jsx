@@ -80,8 +80,8 @@ export default function Home() {
 
   if (!user)
     return (
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="text-3xl font-bold pt-20  ">
+      <div className="flex flex-col justify-center items-center max-w-screen px-10 text-center">
+        <h1 className="text-xl lg:text-3xl font-bold pt-20">
           Per vedere questa pagina devi essere loggato...
         </h1>
         <Link
@@ -93,13 +93,13 @@ export default function Home() {
       </div>
     );
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-center py-10  ">
+    <div className="max-w-screen overflow-hidden">
+      <h1 className="lg:text-4xl text-2xl font-bold text-center py-10  ">
         Lista delle cose da fare:
       </h1>
       <div className="flex gap-5 justify-center py-5 ">
         <input
-          className="border w-1/3 px-3 py-1 rounded-xl"
+          className="border lg:w-1/3 px-3 py-1 rounded-xl"
           type="text"
           placeholder="Aggiungi un nuovo todo"
           value={todo}
@@ -112,13 +112,13 @@ export default function Home() {
           Aggiungi
         </button>
       </div>
-      <div className="py-5 flex flex-col gap-2 px-100">
+      <div className="py-5 flex flex-col gap-2 xl:px-100 px-5">
         {todoList &&
           todoList.map((todo) => {
             return (
-              <div key={todo.id} className="flex justify-between">
+              <div key={todo.id} className="flex justify-between items-center">
                 {editing === todo.id ? (
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 items-center">
                     <input
                       onChange={(e) => {
                         setEditingTodo(e.target.value);
@@ -128,7 +128,7 @@ export default function Home() {
                       value={editingTodo}
                     />
                     <button
-                      className="border  border-green-500 px-3 py-1 rounded-2xl cursor-pointer hover:bg-green-900 "
+                      className="border border-green-500 px-3 py-1 rounded-2xl cursor-pointer hover:bg-green-900"
                       onClick={() => updateTodo(todo.id)}
                     >
                       accetta
@@ -143,23 +143,36 @@ export default function Home() {
                 ) : (
                   <span>{todo.name}</span>
                 )}
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => {
-                      setEditing(todo.id);
-                      setEditingTodo(todo.name);
-                    }}
-                    className="bg-green-600 px-3 border border-green-500 py-1 rounded-2xl cursor-pointer hover:bg-green-700"
-                  >
-                    modifica
-                  </button>
-                  <button
-                    onClick={() => deleteTodo(todo.id)}
-                    className="bg-red-500 px-3 py-1 rounded-2xl border border-red-500 cursor-pointer hover:bg-red-600"
-                  >
-                    elimina
-                  </button>
-                </div>
+
+                {editing !== todo.id && (
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        setEditing(todo.id);
+                        setEditingTodo(todo.name);
+                      }}
+                      className="bg-green-600 px-2 lg:px-3 border border-green-500 py-1 rounded-2xl cursor-pointer hover:bg-green-700"
+                    >
+                      <span className="hidden lg:block">modifica</span>
+                      <img
+                        className="lg:hidden h-5 min-w-5"
+                        src="https://img.icons8.com/?size=100&id=PJyD19u6Z96X&format=png&color=000000"
+                        alt=""
+                      />
+                    </button>
+                    <button
+                      onClick={() => deleteTodo(todo.id)}
+                      className="bg-red-500 px-2 lg:px-3 py-1 rounded-2xl border border-red-500 cursor-pointer hover:bg-red-600"
+                    >
+                      <span className="hidden lg:block">elimina</span>
+                      <img
+                        className="lg:hidden h-5 min-w-5"
+                        src="https://img.icons8.com/?size=100&id=4MBC7gtaoPlW&format=png&color=000000"
+                        alt=""
+                      />
+                    </button>
+                  </div>
+                )}
               </div>
             );
           })}
