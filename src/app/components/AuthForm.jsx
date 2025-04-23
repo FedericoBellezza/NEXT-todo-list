@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useAppContext } from "../AppContext";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function AuthForm() {
@@ -10,6 +10,7 @@ export default function AuthForm() {
   const { login } = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const pathname = usePathname();
 
   const handleLogin = async (type) => {
@@ -25,10 +26,10 @@ export default function AuthForm() {
         });
 
         if (error) {
+          setError(error);
           alert(`Errore: ${error.message}`);
           return;
         }
-
         console.log("Login effettuato con successo!", data.user);
         login(data.user);
         alert(`Benvenuto ${data.user.email}!`);
@@ -39,7 +40,7 @@ export default function AuthForm() {
       }
     } else if (type === "/register") {
       try {
-        const { data, error } = await supabase.auth.signup({ email, password });
+        const { data, error } = await supabase.auth.signUp({ email, password });
         if (error) {
           throw error;
         }
@@ -47,14 +48,21 @@ export default function AuthForm() {
         alert(`Avvenuta registrazione ${data.user.email}!`);
         router.push("/login");
       } catch (err) {
-        console.error("Errore imprevisto:", err);
-        alert("Siè verificato un errore durante la registrazione");
+        console.log(err);
+
+        setError(err.message);
+        return;
       }
     }
   };
 
   return (
     <div className="p-10">
+      {error && (
+        <p className=" my-5 py-5 text-center bg-red-900 border border-red-500 rounded-xl">
+          Errore: {error}
+        </p>
+      )}
       <div className="flex gap-4">
         <input
           className="bg-slate-700 px-3 py-1 rounded-2xl"
@@ -72,10 +80,10 @@ export default function AuthForm() {
         />
 
         <button
-          className="bg-red-500 px-3 py-1 rounded-2xl cursor-pointer"
+          className="bg-blue-500 px-3 py-1 rounded-2xl cursor-pointer hover:bg-blue-600 transition"
           onClick={() => handleLogin(pathname)}
         >
-          {pathname == "/login" ? "Login" : "Registrati"}
+          {pathname == "/login" ? "accedi" : "registrati"}
         </button>
       </div>
       <div className="mt-10 text-center">

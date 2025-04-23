@@ -2,10 +2,13 @@
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { useAppContext } from "../AppContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const { user, login } = useAppContext();
+
+  // states
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   useEffect(() => {
     const getSession = async () => {
@@ -18,20 +21,51 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="bg-blue-800 p-5 flex justify-between">
-      <h2>Navbar</h2>
-      <span className="font-bold italic underline">
-        {user !== null && user.email}
-      </span>
+    <div className="bg-blue-800 p-5 flex justify-between items-center">
+      <Link href={"/"} className="text-3xl italic font-black">
+        TaskManager
+      </Link>
 
-      <ul className="flex gap-4">
-        <Link href={"/"}>Home</Link>
+      <div className="flex items-center gap-4">
         {user == null ? (
           <Link href={"/login"}>Login</Link>
         ) : (
-          <Link href={"/logout"}>Logout</Link>
+          <div className="flex items-center gap-3">
+            <span className="font-bold italic text-xs underline ml-5">
+              {user !== null && user.email}
+            </span>
+            <img
+              onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+              className="w-10 h-10 rounded-full cursor-pointer"
+              src={
+                user !== null &&
+                "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+              }
+              alt={user !== null && user.email}
+            />
+            <div>
+              {isUserMenuOpen && (
+                <div className="absolute top-18 right-5 bg-white text-gray-800 rounded-md shadow-lg">
+                  <div className="py-2 flex flex-col">
+                    <Link
+                      href={"/logout"}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      Logout
+                    </Link>
+                    <Link
+                      href={"/settings"}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      Impostazioni
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         )}
-      </ul>
+      </div>
     </div>
   );
 }
