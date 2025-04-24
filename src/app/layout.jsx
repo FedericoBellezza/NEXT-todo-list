@@ -32,7 +32,6 @@ export default function RootLayout({ children }) {
         <AppProvider>
           <Head>
             <Analytics />
-
             <SpeedInsights />
             <title>Task Manager</title>
           </Head>

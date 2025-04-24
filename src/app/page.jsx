@@ -96,8 +96,8 @@ export default function Home() {
     );
   return (
     <div className="max-w-screen overflow-hidden">
-      <h1 className="lg:text-4xl text-2xl font-bold text-center py-10  ">
-        Lista delle cose da fare:
+      <h1 className="lg:text-4xl text-3xl font-bold text-center py-10  ">
+        La tua lista
       </h1>
       {error && <p className="text-red-500 text-center">Errore: {error}</p>}
       <div className="flex gap-5 justify-center py-5 ">
@@ -156,12 +156,7 @@ export default function Home() {
                       }}
                       className="bg-green-600 px-2 lg:px-3 border border-green-500 py-1 rounded-2xl cursor-pointer hover:bg-green-700"
                     >
-                      <span className="hidden lg:block">modifica</span>
-                      <img
-                        className="lg:hidden h-5 min-w-5"
-                        src="https://img.icons8.com/?size=100&id=PJyD19u6Z96X&format=png&color=000000"
-                        alt=""
-                      />
+                      <span>modifica</span>
                     </button>
                     <button
                       onClick={() => deleteTodo(todo.id)}
@@ -170,7 +165,7 @@ export default function Home() {
                       <span className="hidden lg:block">elimina</span>
                       <img
                         className="lg:hidden h-5 min-w-5"
-                        src="https://img.icons8.com/?size=100&id=4MBC7gtaoPlW&format=png&color=000000"
+                        src="https://img.icons8.com/FFFFFF/ios-glyphs/30/filled-trash.png"
                         alt=""
                       />
                     </button>
