@@ -119,59 +119,65 @@ export default function Home() {
         {todoList &&
           todoList.map((todo) => {
             return (
-              <div key={todo.id} className="flex justify-between items-center">
-                {editing === todo.id ? (
-                  <div className="flex gap-2 items-center">
-                    <input
-                      onChange={(e) => {
-                        setEditingTodo(e.target.value);
-                      }}
-                      className="bg-gray-500 grow w-2/3 border px-3 py-1 rounded-xl"
-                      type="text"
-                      value={editingTodo}
-                    />
-                    <button
-                      className="w-1/3 border border-green-500 lg:px-3 py-1 rounded-2xl cursor-pointer hover:bg-green-900"
-                      onClick={() => updateTodo(todo.id)}
-                    >
-                      accetta
-                    </button>
-                    <button
-                      className="border w-1/3   border-red-500 lg:px-3 py-1 rounded-2xl cursor-pointer hover:bg-red-900"
-                      onClick={() => setEditing(null)}
-                    >
-                      annulla
-                    </button>
-                  </div>
-                ) : (
-                  <span>{todo.name}</span>
-                )}
-
-                {editing !== todo.id && (
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => {
-                        setEditing(todo.id);
-                        setEditingTodo(todo.name);
-                      }}
-                      className="bg-green-600 px-2 lg:px-3 border border-green-500 py-1 rounded-2xl cursor-pointer hover:bg-green-700"
-                    >
-                      <span>modifica</span>
-                    </button>
-                    <button
-                      onClick={() => deleteTodo(todo.id)}
-                      className="bg-red-500 px-2 lg:px-3 py-1 rounded-2xl border border-red-500 cursor-pointer hover:bg-red-600"
-                    >
-                      <span className="hidden lg:block">elimina</span>
-                      <img
-                        className="lg:hidden h-5 min-w-5"
-                        src="https://img.icons8.com/FFFFFF/ios-glyphs/30/filled-trash.png"
-                        alt=""
+              <>
+                <div
+                  key={todo.id}
+                  className="flex justify-between items-center"
+                >
+                  {editing === todo.id ? (
+                    <div className="flex gap-2 w-full items-center">
+                      <input
+                        onChange={(e) => {
+                          setEditingTodo(e.target.value);
+                        }}
+                        className="bg-gray-500 w-full border px-3 py-1 rounded-xl"
+                        type="text"
+                        value={editingTodo}
                       />
-                    </button>
-                  </div>
-                )}
-              </div>
+                      <button
+                        className="border border-green-500 lg:px-3 py-1 rounded-2xl cursor-pointer hover:bg-green-900"
+                        onClick={() => updateTodo(todo.id)}
+                      >
+                        accetta
+                      </button>
+                      <button
+                        className="border   border-red-500 lg:px-3 py-1 rounded-2xl cursor-pointer hover:bg-red-900"
+                        onClick={() => setEditing(null)}
+                      >
+                        annulla
+                      </button>
+                    </div>
+                  ) : (
+                    <span>{todo.name}</span>
+                  )}
+
+                  {editing !== todo.id && (
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => {
+                          setEditing(todo.id);
+                          setEditingTodo(todo.name);
+                        }}
+                        className="bg-green-600 px-2 lg:px-3 border border-green-500 py-1 rounded-2xl cursor-pointer hover:bg-green-700"
+                      >
+                        <span>modifica</span>
+                      </button>
+                      <button
+                        onClick={() => deleteTodo(todo.id)}
+                        className="bg-red-500 px-2 lg:px-3 py-1 rounded-2xl border border-red-500 cursor-pointer hover:bg-red-600"
+                      >
+                        <span className="hidden lg:block">elimina</span>
+                        <img
+                          className="lg:hidden h-5 min-w-5"
+                          src="https://img.icons8.com/FFFFFF/ios-glyphs/30/filled-trash.png"
+                          alt=""
+                        />
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <hr />
+              </>
             );
           })}
       </div>
