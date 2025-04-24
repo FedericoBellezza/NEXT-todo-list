@@ -126,18 +126,18 @@ export default function Home() {
                       onChange={(e) => {
                         setEditingTodo(e.target.value);
                       }}
-                      className="bg-gray-500 border px-3 py-1 rounded-xl"
+                      className="bg-gray-500 grow w-2/3 border px-3 py-1 rounded-xl"
                       type="text"
                       value={editingTodo}
                     />
                     <button
-                      className="border border-green-500 px-3 py-1 rounded-2xl cursor-pointer hover:bg-green-900"
+                      className="w-1/3 border border-green-500 lg:px-3 py-1 rounded-2xl cursor-pointer hover:bg-green-900"
                       onClick={() => updateTodo(todo.id)}
                     >
                       accetta
                     </button>
                     <button
-                      className="border  border-red-500 px-3 py-1 rounded-2xl cursor-pointer hover:bg-red-900"
+                      className="border w-1/3   border-red-500 lg:px-3 py-1 rounded-2xl cursor-pointer hover:bg-red-900"
                       onClick={() => setEditing(null)}
                     >
                       annulla
