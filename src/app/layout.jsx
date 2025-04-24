@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { AppProvider } from "./AppContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+
 import Head from "next/head";
 
 const geistSans = Geist({
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
         <AppProvider>
           <Head>
             <Analytics />
+
             <SpeedInsights />
             <title>Task Manager</title>
           </Head>
