@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { AppProvider } from "./AppContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
 
 const geistSans = Geist({
@@ -27,10 +28,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-linear-to-tr from-slate-800 to-slate-900 text-white`}
       >
-        <SpeedInsights />
         <AppProvider>
           <Head>
-            <title>JUYTFg </title>
+            <Analytics />
+            <SpeedInsights />
+            <title>Task Manager</title>
           </Head>
           <Navbar />
           <div className="container mx-auto min-h-screen py-10">{children}</div>
