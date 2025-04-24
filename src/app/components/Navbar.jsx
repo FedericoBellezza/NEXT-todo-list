@@ -20,11 +20,6 @@ export default function Navbar() {
     getSession();
   }, []);
 
-  isUserMenuOpen &&
-    setTimeout(() => {
-      setIsUserMenuOpen(false);
-    }, 2000);
-
   return (
     <div className="bg-linear-to-tr from-purple-700 to-blue-900 p-5 flex justify-between items-center text-white">
       <Link href={"/"} className="text-3xl italic font-black">
@@ -37,7 +32,7 @@ export default function Navbar() {
             {user !== null && user.email}
           </span>
           <img
-            onClick={() => setIsUserMenuOpen(true)}
+            onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
             className="w-10 h-10 rounded-full cursor-pointer"
             src={
               user == null
