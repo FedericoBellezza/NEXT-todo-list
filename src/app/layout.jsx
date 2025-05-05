@@ -47,6 +47,12 @@ export default function RootLayout({ children }) {
       >
         <AppProvider>
           <Head>
+            <meta
+              name="image"
+              property="og:image"
+              content="https://next-todo-list-swart.vercel.app/og-image.png"
+            />
+
             <Analytics />
             <SpeedInsights />
           </Head>
