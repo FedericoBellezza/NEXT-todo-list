@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Manager con Next.js e Supabase 🚀
 
-## Getting Started
+Benvenuto nel mio progetto **Task Manager**! Questo progetto è stato sviluppato utilizzando **Next.js** e **Supabase** per creare un'applicazione moderna e funzionale per la gestione delle attività. 💼📝
 
-First, run the development server:
+<img src="./public/task-manager-screenshot.jpg" alt="Screenshot">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📝 Descrizione del Progetto
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Il Task Manager è un'applicazione web che permette agli utenti di gestire le proprie attività in modo semplice e intuitivo. Include funzionalità di autenticazione sicura e gestione degli stati per un'esperienza utente ottimale. 🌱
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### ✨ Funzionalità Principali
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Autenticazione tramite email e password** 📧🔒
+- **CRUD completo per le attività** (creazione, lettura, aggiornamento e cancellazione) ✅
+- **Sicurezza avanzata con Row Level Security (RLS)** 🔐
+- **Esperienza utente fluida grazie a pagine di loading** 🚀
+- **Gestione degli stati tramite contesto di React** ⚛️
 
-## Learn More
+## 📦 Tecnologie Utilizzate
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js** - Framework React per applicazioni full-stack
+- **Supabase** - Backend-as-a-Service (BaaS) per autenticazione e database
+- **Tailwind CSS** - Styling moderno e responsivo
+- **Vercel** - Deploy rapido e scalabile
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Cosa Ho Imparato
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **Next.js**
 
-## Deploy on Vercel
+- Inizializzazione del progetto
+- Gestione delle rotte e del layout
+- Componenti Server-side e Client-side
+- Creazione di un contesto per la gestione dello stato
+- Miglioramento dell'esperienza utente con pagine di loading
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### **Supabase**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Configurazione del progetto e gestione dei dati sensibili tramite .env
+- Autenticazione sicura e autorizzazione degli utenti
+- Chiamate API: GET, POST, DELETE, UPDATE
+- Implementazione del Row Level Security (RLS) per proteggere i dati degli utenti
+
+## 🌍 Deploy
+
+Il progetto è stato distribuito su Vercel, rendendolo accessibile da qualsiasi dispositivo connesso a Internet.
+👉 **Link al sito:** [Task Manager](https://next-todo-list-swart.vercel.app/)
