@@ -21,6 +21,22 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Task Manager",
   description: "Gestisci le tue attività",
+  openGraph: {
+    title: "Task Manager",
+    description: "Gestisci le tue attività con il mio task manager!",
+    url: "https://next-todo-list-swart.vercel.app/",
+    siteName: "Task Manager",
+    images: [
+      {
+        url: "https://next-todo-list-swart.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Task Manager Preview",
+      },
+    ],
+    locale: "it_IT",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -31,9 +47,14 @@ export default function RootLayout({ children }) {
       >
         <AppProvider>
           <Head>
+            <meta
+              name="image"
+              property="og:image"
+              content="https://next-todo-list-swart.vercel.app/og-image.png"
+            />
+
             <Analytics />
             <SpeedInsights />
-            <title>Task Manager</title>
           </Head>
           <Navbar />
           <div className="container mx-auto min-h-screen py-10">{children}</div>
